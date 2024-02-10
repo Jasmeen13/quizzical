@@ -1,14 +1,13 @@
 import React from "react";
 import "./Home.css"
-function Home(){
+function Home(props){
     return(
         <div className="home-main">
-            <div className="top-right-blob"></div>
-            <div className="left-bottom-blob"></div>
+            {console.log("Rendering Home ")}
             <div className="main-container">
                 <div className="heading">Quizzical</div>
                 <div className="sub-heading">Let's check your general knowledge</div>
-                <button className="start-btn">Start Quiz</button>
+                <button className="start-btn" onClick={()=>{props.setStartTest(true)}}>Start Quiz</button>
             </div>
         </div>
     )

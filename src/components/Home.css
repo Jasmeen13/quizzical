@@ -1,18 +1,20 @@
 .top-right-blob{
     display:inline-block;
-    position: absolute;
+    position: fixed;
     width:23vw;
     height:30vh;
     margin-right: 0%;
     margin-left:77%;
     background-color: #FFFAD1;
     overflow:hidden;
+    z-index: -1;
     border-radius: 0% 0% 30% 80%/45% 0% 0% 50%;
 }
 .left-bottom-blob{
     display:inline-block;
-    position: absolute;
+    position: fixed;
     width:20vw;
+    z-index: -1;
     height:30vh;
     margin-top:70vh;
     margin-left: 0%;
@@ -48,10 +50,96 @@
     border:none;
     margin: 25px;
 }
-.start-btn:hover{
+button:hover{
     cursor: pointer;
     
 }
-.start-btn:active{
+button:active{
     box-shadow: inset 1px 1px 5px 4px rgba(32, 32, 32, 0.5);
+}
+.test-questions-wrapper{
+    padding:  10px 20vw;
+    padding-bottom: 0;
+}
+.submit-div{
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+}
+.question-wrapper{
+    padding: 15px;
+}
+.question-container{
+    border-bottom: 1.5px solid #DBDEF0 ;    
+}
+.question{
+    font-weight: 500;
+    font-size: 25px;
+    color: #293264;
+    margin-bottom: 15px;
+}
+.options{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+.option{
+    font-weight: 450;
+    border: 1px solid #4D5B9E;
+    word-wrap: break-word;
+    border-radius: 10px;
+    min-width: 100px;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+
+    margin-right: 20px;
+}
+.option:hover{
+    cursor: pointer;
+}
+
+.submit{
+    width:200px;
+    background-color: #4D5B9E;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+}
+@media screen and (max-width: 950px){
+    .test-questions-wrapper{
+        padding: 10px 10vw;
+        padding-bottom: 0;
+    }
+}
+@media screen and (max-width: 600px){
+    .question{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .question-wrapper{
+        margin: 0px 20px;
+        padding: 15px;
+    }
+}
+
+@media screen and(max-height: 850px){
+    .left-bottom-blob{
+        display: none;
+    }
+}
+@media screen and (max-width: 700px){
+    .options{
+        display: grid;
+        grid-template: 1fr 1fr/1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+    };
+    .option{
+        margin-right: 0px;
+    }
 }
