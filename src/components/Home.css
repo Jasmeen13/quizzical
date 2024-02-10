@@ -70,18 +70,17 @@ button:active{
     padding: 15px;
 }
 .question-container{
-    border-bottom: 1.5px solid #DBDEF0 ;    
+    border-bottom: 1.5px solid #DBDEF0 ;
+    color: #293264;    
 }
 .question{
     font-weight: 500;
     font-size: 25px;
-    color: #293264;
     margin-bottom: 15px;
 }
 .options{
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
 }
 .option{
     font-weight: 450;
@@ -99,13 +98,26 @@ button:active{
 .option:hover{
     cursor: pointer;
 }
+.selected{
+    background-color: #D6DBF5;
+    border:none;
+}
+.incorrect{
+    background-color: #F8BCBC;
+    border:none;
+}
+.correct{
+    background-color: #94D7A2;
+    border:none;
+}
 
-.submit{
+button{
     width:200px;
     background-color: #4D5B9E;
     color: white;
     font-size: 20px;
     padding: 15px;
+    margin: 10px;
     border: none;
     border-radius: 20px;
 }
@@ -142,4 +154,11 @@ button:active{
     .option{
         margin-right: 0px;
     }
+}
+
+.error-msg{
+    text-align: center;
+    padding:50px;
+    font-size: 25px;
+    font-weight: 450;
 }

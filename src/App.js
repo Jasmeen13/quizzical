@@ -9,7 +9,7 @@ function App() {
       <div className="top-right-blob"></div>
       <div className="left-bottom-blob"></div>
       {console.log("rendering App component")}
-      {startTest ? <TestQuestions/>:<Home setStartTest={setStartTest}/>}
+      {startTest ? <TestQuestions setStartTest={setStartTest}/>:<Home setStartTest={setStartTest}/>}
 
     </div>
   );
