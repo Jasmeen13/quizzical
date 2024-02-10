@@ -17,7 +17,6 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     useEffect(()=>{
         (async()=>{
-            console.log("suffle array")
             await shuffleArray(options)
             const optionComp =  await options.map((option)=>{
                 return <span className="option" onClick={handleOptionClick}>{option}</span>
@@ -33,21 +32,16 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     useEffect(()=>{
         if(submit){
-            console.log(typeof(correct_answer))
-            console.log(correct_answer+ "   ,, "+selected)
             const newOptionsState = randomisedOptions.map((option)=>{
                 if(selected !== option && option === correct_answer)
-                    {console.log(option)
-                    return <span className="option correct">{option}</span>}
+                    return <span className="option correct">{option}</span>
                 else if(selected === option ){
-                    console.log(option)
                     if(option === correct_answer)
                         return <span className="option correct" >{option}</span>
                     else
                         return <span className="option incorrect" >{option}</span>
                 }
                 else{
-                    console.log(option)
                     return <span className="option">{option}</span>
                 }
             })
@@ -64,14 +58,12 @@ function Question({question, options, correct_answer, submit, newQuestion}){
                 return <span className="option" onClick={handleOptionClick}>{option}</span>
             }
         })
-        console.log(newOptionsState)
         setOptionsState(prev=>({...prev, optionsState: newOptionsState, selected: e.target.innerText}));
     }
 
     return(
         <div className="question-wrapper">
             <div className="question-container">
-                {console.log(":rendering Question")}
                 <div className="question">{question}</div>
                 <div className="options" >
                     {optionsState}
