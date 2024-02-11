@@ -32,7 +32,9 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     useEffect(()=>{
         if(submit){
+            console.log(correct_answer, selected)
             const newOptionsState = randomisedOptions.map((option)=>{
+                console.log(option)
                 if(selected !== option && option === correct_answer)
                     return <span className="option correct">{option}</span>
                 else if(selected === option ){
