@@ -19,7 +19,7 @@ function Question({question, options, correct_answer, submit, newQuestion}){
         (async()=>{
             await shuffleArray(options)
             const optionComp =  await options.map((option)=>{
-                return <span className="option" onClick={handleOptionClick}>{option}</span>
+                return <span className="option" onClick={handleOptionClick} dangerouslySetInnerHTML={{__html: option}}></span>
             })
             await setOptionsState({
                 optionsState: optionComp,
@@ -36,15 +36,15 @@ function Question({question, options, correct_answer, submit, newQuestion}){
             const newOptionsState = randomisedOptions.map((option)=>{
                 console.log(option)
                 if(selected !== option && option === correct_answer)
-                    return <span className="option correct">{option}</span>
+                    return <span className="option correct" dangerouslySetInnerHTML={{__html: option}}></span>
                 else if(selected === option ){
                     if(option === correct_answer)
-                        return <span className="option correct" >{option}</span>
+                        return <span className="option correct" dangerouslySetInnerHTML={{__html: option}}></span>
                     else
-                        return <span className="option incorrect" >{option}</span>
+                        return <span className="option incorrect" dangerouslySetInnerHTML={{__html: option}}></span>
                 }
                 else{
-                    return <span className="option">{option}</span>
+                    return <span className="option" dangerouslySetInnerHTML={{__html: option}}></span>
                 }
             })
             setOptionsState(prev=>({...prev, optionsState: newOptionsState}));
@@ -53,20 +53,20 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     function handleOptionClick(e){
         const newOptionsState = options.map((option)=>{
-            if(option == e.target.innerText){
-                return <span className="option selected" onClick={handleOptionClick}>{option}</span>
+            if(option == e.target.innerHTML){
+                return <span className="option selected" onClick={handleOptionClick} dangerouslySetInnerHTML={{__html: option}}></span>
             }
             else {
-                return <span className="option" onClick={handleOptionClick}>{option}</span>
+                return <span className="option" onClick={handleOptionClick} dangerouslySetInnerHTML={{__html: option}}></span>
             }
         })
-        setOptionsState(prev=>({...prev, optionsState: newOptionsState, selected: e.target.innerText}));
+        setOptionsState(prev=>({...prev, optionsState: newOptionsState, selected: e.target.innerHTML}));
     }
 
     return(
         <div className="question-wrapper">
             <div className="question-container">
-                <div className="question">{question}</div>
+                <div className="question" dangerouslySetInnerHTML={{__html: question}}></div>
                 <div className="options" >
                     {optionsState}
                 </div>
