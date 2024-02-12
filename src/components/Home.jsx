@@ -35,10 +35,12 @@ function Home(props){
                 <div className="heading">Quizzical</div>
                 <div className="sub-heading">Let's take a test</div>
                 <div className="choice-wrapper">
-                    <select className="category" ref={categoryRef}>
+                    <label for="category">Category:</label>
+                    <select className="category" name="category" ref={categoryRef}>
                         {categoriesJSX}
                     </select>
-                    <select className="difficulty-level" ref={difficultyRef}>
+                    <label for="difficulty">Difficulty Level:</label>
+                    <select className="difficulty-level" name ="difficulty" ref={difficultyRef}>
                         {difficultyJSX}
                     </select>
                 </div>

@@ -82,6 +82,11 @@ button:active{
     display: flex;
     align-items: center;
 }
+.choice-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .option{
     font-weight: 450;
     border: 1px solid #4D5B9E;
@@ -136,6 +141,9 @@ button{
     .question-wrapper{
         margin: 0px 20px;
         padding: 15px;
+    }
+    .choice-wrapper{
+        flex-direction: column;
     }
 }
 
