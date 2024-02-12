@@ -9,10 +9,10 @@ function TestQuestions({category,level,setStartTest}){
             const jsonObject = await response.json();
             await (jsonObject.response_code === 0 )
             ? setQuesArr((prev)=>({...prev,quesAnsArr:jsonObject.results,error:""}))
-            : setQuesArr((prev)=>({...prev,error:jsonObject}))
+            : setQuesArr((prev)=>({...prev,quesAnsArr:[], error:jsonObject}))
             
         })()
-    },[page])
+    },[page, category, level])
 
     const arr = quesAnsArr.map((quesAns, i)=>{
             quesAns.incorrect_answers.forEach(element => {
@@ -26,7 +26,7 @@ function TestQuestions({category,level,setStartTest}){
 
     return(
         <div className="test-questions-wrapper">
-            {error != "" &&  <div className="error-msg">Couldn't load the questions, Please try reloading. </div>}
+            {(error != ""&& (arr.length == 0)) &&  <div className="error-msg">Couldn't load the questions, Please try again in a while. </div>}
             {arr}
             <div className="submit-div">
                 {error == "" && ((arr.length == 0)? <div>loading....</div>: (!submit &&<button className="submit" onClick={()=>{setQuesArr(prev=>({...prev, submit: true}))}}>Check Answers</button>))}

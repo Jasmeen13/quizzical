@@ -32,19 +32,19 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     useEffect(()=>{
         if(submit){
-            console.log(correct_answer, selected)
             const newOptionsState = randomisedOptions.map((option)=>{
-                console.log(option)
-                if(selected !== option && option === correct_answer)
-                    return <span className="option correct" dangerouslySetInnerHTML={{__html: option}}></span>
-                else if(selected === option ){
+                var htmlOption = document.createElement('div');
+                htmlOption.innerHTML = option;
+                if(selected != htmlOption.innerHTML && option === correct_answer)
+                    return <span className="option correct">{htmlOption.innerHTML}</span>
+                else if(selected == htmlOption.innerHTML ){
                     if(option === correct_answer)
-                        return <span className="option correct" dangerouslySetInnerHTML={{__html: option}}></span>
+                        return <span className="option correct">{htmlOption.innerHTML}</span>
                     else
-                        return <span className="option incorrect" dangerouslySetInnerHTML={{__html: option}}></span>
+                        return <span className="option incorrect">{htmlOption.innerHTML}</span>
                 }
                 else{
-                    return <span className="option" dangerouslySetInnerHTML={{__html: option}}></span>
+                    return <span className="option">{htmlOption.innerHTML}</span>
                 }
             })
             setOptionsState(prev=>({...prev, optionsState: newOptionsState}));
@@ -53,14 +53,16 @@ function Question({question, options, correct_answer, submit, newQuestion}){
 
     function handleOptionClick(e){
         const newOptionsState = options.map((option)=>{
-            if(option == e.target.innerHTML){
-                return <span className="option selected" onClick={handleOptionClick} dangerouslySetInnerHTML={{__html: option}}></span>
+            var htmlOption = document.createElement('div');
+            htmlOption.innerHTML = option;
+            if(htmlOption.innerHTML == e.target.innerHTML){
+                return <span className="option selected" onClick={handleOptionClick} >{htmlOption.innerHTML}</span>
             }
             else {
-                return <span className="option" onClick={handleOptionClick} dangerouslySetInnerHTML={{__html: option}}></span>
+                return <span className="option" onClick={handleOptionClick}>{htmlOption.innerHTML}</span>
             }
         })
-        setOptionsState(prev=>({...prev, optionsState: newOptionsState, selected: e.target.innerHTML}));
+        setOptionsState(prev=>({...prev, optionsState: newOptionsState, selected: e.target.innerText}));
     }
 
     return(
